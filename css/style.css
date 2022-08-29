@@ -146,10 +146,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: -webkit-linear-gradient(#f00, #00f) url("images/banner-dark.jpg") no-repeat top center;
-  background: -moz-linear-gradient(#f00, #00f) url("images/banner-dark.jpg") no-repeat top center;
-  background: -ms-linear-gradient(#f00, #00f) url("images/banner-dark.jpg") no-repeat top center;
-  background: linear-gradient(#f00, #00f) url("images/banner-dark.jpg") no-repeat top center;
+  background: #1e1b14 url("images/banner-dark.jpg") no-repeat top center;
   background-attachment: fixed;
   font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: #555;

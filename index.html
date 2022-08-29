@@ -201,106 +201,6 @@
 </article>
 
 
-  <article id="post-离线升级opensshopenssl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-08-28T10:30:00.000Z" itemprop="datePublished">2022年08月28日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-<a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="如何离线升级openssh和openssl"><a href="#如何离线升级openssh和openssl" class="headerlink" title="如何离线升级openssh和openssl"></a>如何离线升级openssh和openssl</h1><h3 id="1、环境检查"><a href="#1、环境检查" class="headerlink" title="1、环境检查"></a>1、环境检查</h3><p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png" alt="image-20211120235204382"></p>
-<p>先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep gcc</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235224223.png" alt="image-20211120235224223"></p>
-<p>缺少</p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235252329.png" alt="image-20211120235252329"></p>
-<p>正常应该是这样</p>
-<p><strong>缺少则安装gcc等编译环境</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#把相关的rpm包全部放到gcc文件夹</span></span><br><span class="line"><span class="comment">#进入gcc文件夹，忽略依赖安装</span></span><br><span class="line">rpm -Uvh --force --nodeps *.rpm</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235530863.png" alt="image-20211120235530863"></p>
-<h3 id="2、编译安装openssl"><a href="#2、编译安装openssl" class="headerlink" title="2、编译安装openssl"></a>2、编译安装openssl</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/openssl/source/">https://mirrors.cloud.tencent.com/openssl/source/</a></p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235556490.png" alt="image-20211120235556490"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份旧版</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.1.0.2k_bak </span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.1.0.2k_bak </span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -zxvf openssl-1.0.2k.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-1.0.2k</span><br><span class="line"><span class="comment">#添加openssl配置</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line"><span class="comment">#编译</span></span><br><span class="line">make</span><br><span class="line"><span class="comment">#卸载旧版本</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa |grep  openssl);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span> --nodeps  ;<span class="keyword">done</span></span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install</span><br><span class="line"><span class="comment">#配置相关软链</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libssl.so.1.1 /lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> -f /usr/local/openssl/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libcrypto.so.1.1 /usr/lib64</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line">openssl version -a</span><br><span class="line"><span class="comment">#修改1.0版软链</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k_bak /usr/lib64/libcrypto.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -fs /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k_bak /usr/lib64/libssl.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.10</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、编译安装openssh"><a href="#3、编译安装openssh" class="headerlink" title="3、编译安装openssh"></a>3、编译安装openssh</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/">https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/</a></p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235616921.png" alt="image-20211120235616921"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入openssh文件夹，并配置</span></span><br><span class="line">./configure --prefix=/usr --sysconfdir=/etc/ssh  --with-ssl-dir=/usr/local/openssl</span><br><span class="line"><span class="comment">#执行make</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment">#卸载 旧版本的openssh</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa  |grep  openssh);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span>  --nodeps ;<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本openssh</span></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看新版的本号</span></span><br><span class="line">ssh -V</span><br><span class="line"></span><br><span class="line">// 在使用ssh登陆试试</span><br><span class="line">sudo <span class="built_in">cp</span> contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入开机启动</span></span><br><span class="line">sudo chkconfig --add sshd</span><br><span class="line">sudo  chkconfig sshd on</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置 PermitRootLogin yes</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes&quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">// 重启服务</span><br><span class="line">sudo service sshd restart</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235714131.png" alt="image-20211120235714131"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_rsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ed25519_key</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、升级后的问题"><a href="#4、升级后的问题" class="headerlink" title="4、升级后的问题"></a>4、升级后的问题</h3><h5 id="1）无法登陆ssh"><a href="#1）无法登陆ssh" class="headerlink" title="1）无法登陆ssh"></a>1）无法登陆ssh</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">临时关闭 setenforce 0 </span><br><span class="line"><span class="comment">#设置SELinux 成为permissive模式 setenforce 1 设置SELinux 成为enforcing模式 修改配置文件需要重启服务器 修改/etc/selinux/config 文件，将SELINUX=enforcing改为SELINUX=disabled</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="2）docker网络异常"><a href="#2）docker网络异常" class="headerlink" title="2）docker网络异常"></a>2）docker网络异常</h5><p>重启docker服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h5 id="3）Sftp账号异常"><a href="#3）Sftp账号异常" class="headerlink" title="3）Sftp账号异常"></a>3）Sftp账号异常</h5><p>因为&#x2F;etc&#x2F;ssh&#x2F;sshd_config文件更新后为全新文件，相关的配置也会被修改。需按照升级前的配置修改。</p>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://example.com/index.html">http://example.com/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
   <article id="post-MarkDown测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -460,6 +360,106 @@ Banana</p>
 </article>
 
 
+  <article id="post-离线升级opensshopenssl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-08-28T10:30:00.000Z" itemprop="datePublished">2022年08月28日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+      
+<a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="如何离线升级openssh和openssl"><a href="#如何离线升级openssh和openssl" class="headerlink" title="如何离线升级openssh和openssl"></a>如何离线升级openssh和openssl</h1><h3 id="1、环境检查"><a href="#1、环境检查" class="headerlink" title="1、环境检查"></a>1、环境检查</h3><p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png" alt="image-20211120235204382"></p>
+<p>先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep gcc</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235224223.png" alt="image-20211120235224223"></p>
+<p>缺少</p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235252329.png" alt="image-20211120235252329"></p>
+<p>正常应该是这样</p>
+<p><strong>缺少则安装gcc等编译环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#把相关的rpm包全部放到gcc文件夹</span></span><br><span class="line"><span class="comment">#进入gcc文件夹，忽略依赖安装</span></span><br><span class="line">rpm -Uvh --force --nodeps *.rpm</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235530863.png" alt="image-20211120235530863"></p>
+<h3 id="2、编译安装openssl"><a href="#2、编译安装openssl" class="headerlink" title="2、编译安装openssl"></a>2、编译安装openssl</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/openssl/source/">https://mirrors.cloud.tencent.com/openssl/source/</a></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235556490.png" alt="image-20211120235556490"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份旧版</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.1.0.2k_bak </span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.1.0.2k_bak </span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -zxvf openssl-1.0.2k.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-1.0.2k</span><br><span class="line"><span class="comment">#添加openssl配置</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line"><span class="comment">#编译</span></span><br><span class="line">make</span><br><span class="line"><span class="comment">#卸载旧版本</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa |grep  openssl);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span> --nodeps  ;<span class="keyword">done</span></span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install</span><br><span class="line"><span class="comment">#配置相关软链</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libssl.so.1.1 /lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> -f /usr/local/openssl/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libcrypto.so.1.1 /usr/lib64</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line">openssl version -a</span><br><span class="line"><span class="comment">#修改1.0版软链</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k_bak /usr/lib64/libcrypto.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -fs /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k_bak /usr/lib64/libssl.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.10</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、编译安装openssh"><a href="#3、编译安装openssh" class="headerlink" title="3、编译安装openssh"></a>3、编译安装openssh</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/">https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/</a></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235616921.png" alt="image-20211120235616921"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入openssh文件夹，并配置</span></span><br><span class="line">./configure --prefix=/usr --sysconfdir=/etc/ssh  --with-ssl-dir=/usr/local/openssl</span><br><span class="line"><span class="comment">#执行make</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment">#卸载 旧版本的openssh</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa  |grep  openssh);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span>  --nodeps ;<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本openssh</span></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看新版的本号</span></span><br><span class="line">ssh -V</span><br><span class="line"></span><br><span class="line">// 在使用ssh登陆试试</span><br><span class="line">sudo <span class="built_in">cp</span> contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入开机启动</span></span><br><span class="line">sudo chkconfig --add sshd</span><br><span class="line">sudo  chkconfig sshd on</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置 PermitRootLogin yes</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes&quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">// 重启服务</span><br><span class="line">sudo service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235714131.png" alt="image-20211120235714131"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_rsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ed25519_key</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、升级后的问题"><a href="#4、升级后的问题" class="headerlink" title="4、升级后的问题"></a>4、升级后的问题</h3><h5 id="1）无法登陆ssh"><a href="#1）无法登陆ssh" class="headerlink" title="1）无法登陆ssh"></a>1）无法登陆ssh</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">临时关闭 setenforce 0 </span><br><span class="line"><span class="comment">#设置SELinux 成为permissive模式 setenforce 1 设置SELinux 成为enforcing模式 修改配置文件需要重启服务器 修改/etc/selinux/config 文件，将SELINUX=enforcing改为SELINUX=disabled</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2）docker网络异常"><a href="#2）docker网络异常" class="headerlink" title="2）docker网络异常"></a>2）docker网络异常</h5><p>重启docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h5 id="3）Sftp账号异常"><a href="#3）Sftp账号异常" class="headerlink" title="3）Sftp账号异常"></a>3）Sftp账号异常</h5><p>因为&#x2F;etc&#x2F;ssh&#x2F;sshd_config文件更新后为全新文件，相关的配置也会被修改。需按照升级前的配置修改。</p>
+
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/index.html">http://example.com/index.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
 
 </section>
         
@@ -476,11 +476,11 @@ Banana</p>
           </li>
         
           <li>
-            <a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
+            <a href="/2022/08/28/MarkDown%E6%B5%8B%E8%AF%95/">markdown测试</a>
           </li>
         
           <li>
-            <a href="/2022/08/28/MarkDown%E6%B5%8B%E8%AF%95/">markdown测试</a>
+            <a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
           </li>
         
       </ul>
