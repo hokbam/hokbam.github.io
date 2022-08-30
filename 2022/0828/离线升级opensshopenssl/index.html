@@ -1,161 +1,307 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ben">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="如何离线升级openssh和openssl1、环境检查 先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。 1rpm -qa |grep gcc   缺少  正常应该是这样 缺少则安装gcc等编译环境 123#把相关的rpm包全部放到gcc文件夹#进入gcc文件夹，忽略依赖安装rpm -Uvh --force --nodeps *.rpm   2、编译安装openssl下载最新版：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何离线升级openssh和openssl">
+<meta property="og:url" content="https://benlogs.com/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/index.html">
+<meta property="og:site_name" content="阿Ben的网络日志">
+<meta property="og:description" content="如何离线升级openssh和openssl1、环境检查 先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。 1rpm -qa |grep gcc   缺少  正常应该是这样 缺少则安装gcc等编译环境 123#把相关的rpm包全部放到gcc文件夹#进入gcc文件夹，忽略依赖安装rpm -Uvh --force --nodeps *.rpm   2、编译安装openssl下载最新版：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235224223.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235252329.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235530863.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235556490.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235616921.png">
+<meta property="og:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235714131.png">
+<meta property="article:published_time" content="2022-08-28T10:30:00.000Z">
+<meta property="article:modified_time" content="2022-08-29T05:09:33.106Z">
+<meta property="article:author" content="Ben">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png">
   
   
-  <title>如何离线升级openssh和openssl | 阿Ben的网络日志</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
+  <title>如何离线升级openssh和openssl - 阿Ben的网络日志</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
-    <link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"benlogs.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
 
   
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
+</head>
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="/localshare/css/share.css">
-
-  
-  
-  
-<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">阿Ben的网络日志</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录我的学习笔记与生活感想</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ben的日志集</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-      </nav>
-    </div>
-    <div id="search-form">
-      <div id="result-mask" class="hide"></div>
-      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
-      <div id="result-wrap" class="hide">
-        <div id="search-result"></div>
-      </div>
-      <div class="hide">
-        <template id="search-tpl">
-          <div class="item">
-            <a href="/{path}" title="{title}">
-              <div class="title">{title}</div>
-              <div class="time">{date}</div>
-              <div class="tags">{tags}</div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
-          </div>
-        </template>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-离线升级opensshopenssl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          </li>
+          
         
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      如何离线升级openssh和openssl
-    </h1>
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
   
 
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何离线升级openssh和openssl"></span>
+          
+        </div>
 
-      </header>
+        
+          
+  <div class="mt-3">
     
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-08-28T10:30:00.000Z" itemprop="datePublished">2022年08月28日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-28 18:30" pubdate>
+          2022年8月28日 晚上
+        </time>
+      </span>
+    
   </div>
 
-      
-        <span class="article-views">
-  <i class="fa fa-views"></i>
-  <i id="busuanzi_container_page_pv">
-      <i id="busuanzi_value_page_pv"></i>
-  </i>
-</span>
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          undefined 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          NaN 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
 
       
-      
-<a href="/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/#comments" class="article-comment-link">
-  
-    
-    
-    
-    
-    
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
+    </div>
+  </div>
+</div>
 
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
     </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="如何离线升级openssh和openssl"><a href="#如何离线升级openssh和openssl" class="headerlink" title="如何离线升级openssh和openssl"></a>如何离线升级openssh和openssl</h1><h3 id="1、环境检查"><a href="#1、环境检查" class="headerlink" title="1、环境检查"></a>1、环境检查</h3><p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png" alt="image-20211120235204382"></p>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何离线升级openssh和openssl</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="如何离线升级openssh和openssl"><a href="#如何离线升级openssh和openssl" class="headerlink" title="如何离线升级openssh和openssl"></a>如何离线升级openssh和openssl</h1><h3 id="1、环境检查"><a href="#1、环境检查" class="headerlink" title="1、环境检查"></a>1、环境检查</h3><p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235204382.png" srcset="/img/loading.gif" lazyload alt="image-20211120235204382"></p>
 <p>先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa |grep gcc</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235224223.png" alt="image-20211120235224223"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235224223.png" srcset="/img/loading.gif" lazyload alt="image-20211120235224223"></p>
 <p>缺少</p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235252329.png" alt="image-20211120235252329"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235252329.png" srcset="/img/loading.gif" lazyload alt="image-20211120235252329"></p>
 <p>正常应该是这样</p>
 <p><strong>缺少则安装gcc等编译环境</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#把相关的rpm包全部放到gcc文件夹</span></span><br><span class="line"><span class="comment">#进入gcc文件夹，忽略依赖安装</span></span><br><span class="line">rpm -Uvh --force --nodeps *.rpm</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235530863.png" alt="image-20211120235530863"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235530863.png" srcset="/img/loading.gif" lazyload alt="image-20211120235530863"></p>
 <h3 id="2、编译安装openssl"><a href="#2、编译安装openssl" class="headerlink" title="2、编译安装openssl"></a>2、编译安装openssl</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/openssl/source/">https://mirrors.cloud.tencent.com/openssl/source/</a></p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235556490.png" alt="image-20211120235556490"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235556490.png" srcset="/img/loading.gif" lazyload alt="image-20211120235556490"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份旧版</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.1.0.2k_bak </span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.1.0.2k_bak </span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -zxvf openssl-1.0.2k.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-1.0.2k</span><br><span class="line"><span class="comment">#添加openssl配置</span></span><br><span class="line">./config --prefix=/usr/local/openssl</span><br><span class="line"><span class="comment">#编译</span></span><br><span class="line">make</span><br><span class="line"><span class="comment">#卸载旧版本</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa |grep  openssl);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span> --nodeps  ;<span class="keyword">done</span></span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install</span><br><span class="line"><span class="comment">#配置相关软链</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/openssl/lib&quot;</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libssl.so.1.1 /lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> -f /usr/local/openssl/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1</span><br><span class="line"><span class="built_in">cp</span> /usr/local/openssl/lib/libcrypto.so.1.1 /usr/lib64</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so.10</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/bin/openssl /usr/bin/openssl</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/local/openssl/include/openssl /usr/include/openssl</span><br><span class="line">openssl version -a</span><br><span class="line"><span class="comment">#修改1.0版软链</span></span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libcrypto.so.1.0.2k_bak /usr/lib64/libcrypto.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -fs /usr/lib64/libcrypto.so.1.0.2k /usr/lib64/libcrypto.so.10</span><br><span class="line"><span class="built_in">mv</span> /usr/lib64/libssl.so.1.0.2k_bak /usr/lib64/libssl.so.1.0.2k</span><br><span class="line"><span class="built_in">ln</span> -sf /usr/lib64/libssl.so.1.0.2k /usr/lib64/libssl.so.10</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、编译安装openssh"><a href="#3、编译安装openssh" class="headerlink" title="3、编译安装openssh"></a>3、编译安装openssh</h3><p>下载最新版：<a target="_blank" rel="noopener" href="https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/">https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/</a></p>
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235616921.png" alt="image-20211120235616921"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235616921.png" srcset="/img/loading.gif" lazyload alt="image-20211120235616921"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入openssh文件夹，并配置</span></span><br><span class="line">./configure --prefix=/usr --sysconfdir=/etc/ssh  --with-ssl-dir=/usr/local/openssl</span><br><span class="line"><span class="comment">#执行make</span></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"><span class="comment">#卸载 旧版本的openssh</span></span><br><span class="line"><span class="keyword">for</span>  i  <span class="keyword">in</span>  $(rpm  -qa  |grep  openssh);<span class="keyword">do</span>  rpm  -e  <span class="variable">$i</span>  --nodeps ;<span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本openssh</span></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看新版的本号</span></span><br><span class="line">ssh -V</span><br><span class="line"></span><br><span class="line">// 在使用ssh登陆试试</span><br><span class="line">sudo <span class="built_in">cp</span> contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入开机启动</span></span><br><span class="line">sudo chkconfig --add sshd</span><br><span class="line">sudo  chkconfig sshd on</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置 PermitRootLogin yes</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes&quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">// 重启服务</span><br><span class="line">sudo service sshd restart</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235714131.png" alt="image-20211120235714131"></p>
+<p><img src="http://www.smartwirecom.net/upload/img/upload/2021/11/image-20211120235714131.png" srcset="/img/loading.gif" lazyload alt="image-20211120235714131"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_rsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line"><span class="built_in">chmod</span> 600 /etc/ssh/ssh_host_ed25519_key</span><br></pre></td></tr></table></figure>
 
 <h3 id="4、升级后的问题"><a href="#4、升级后的问题" class="headerlink" title="4、升级后的问题"></a>4、升级后的问题</h3><h5 id="1）无法登陆ssh"><a href="#1）无法登陆ssh" class="headerlink" title="1）无法登陆ssh"></a>1）无法登陆ssh</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">临时关闭 setenforce 0 </span><br><span class="line"><span class="comment">#设置SELinux 成为permissive模式 setenforce 1 设置SELinux 成为enforcing模式 修改配置文件需要重启服务器 修改/etc/selinux/config 文件，将SELINUX=enforcing改为SELINUX=disabled</span></span><br></pre></td></tr></table></figure>
@@ -165,220 +311,327 @@
 
 <h5 id="3）Sftp账号异常"><a href="#3）Sftp账号异常" class="headerlink" title="3）Sftp账号异常"></a>3）Sftp账号异常</h5><p>因为&#x2F;etc&#x2F;ssh&#x2F;sshd_config文件更新后为全新文件，相关的配置也会被修改。需按照升级前的配置修改。</p>
 
-        
-            <div id="toc-article">
                 
-  <div class="widget-wrap" id="toc-wrap">
-    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
-    <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7openssh%E5%92%8Copenssl"><span class="toc-text">如何离线升级openssh和openssl</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%8E%AF%E5%A2%83%E6%A3%80%E6%9F%A5"><span class="toc-text">1、环境检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85openssl"><span class="toc-text">2、编译安装openssl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85openssh"><span class="toc-text">3、编译安装openssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%8D%87%E7%BA%A7%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">4、升级后的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89%E6%97%A0%E6%B3%95%E7%99%BB%E9%99%86ssh"><span class="toc-text">1）无法登陆ssh</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89docker%E7%BD%91%E7%BB%9C%E5%BC%82%E5%B8%B8"><span class="toc-text">2）docker网络异常</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%EF%BC%89Sftp%E8%B4%A6%E5%8F%B7%E5%BC%82%E5%B8%B8"><span class="toc-text">3）Sftp账号异常</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
-    </div>
-  </div>
-
-
-            </div>
-        
-        
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-    <footer class="article-footer">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何离线升级openssh和openssl</div>
+      <div>https://benlogs.com/2022/0828/离线升级opensshopenssl/</div>
+    </div>
+    <div class="license-meta">
       
-        <div class="article-tag-wrap">
-          
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ben</div>
         </div>
       
       
-        
-<nav id="article-nav">
-  
-  
-    <a href="/2022/0828/MarkDown%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          markdown测试
-        
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
       </div>
-    </a>
-  
-</nav>
-
-      
-      
-        
-
-
-
-
-
-
-
-
-      
-    </footer>
-  </div>
-</article>
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/0830/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/">阿里云申请免费SSL证书并部署到docker中的halo</a>
-          </li>
-        
-          <li>
-            <a href="/2022/0830/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/">单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离</a>
-          </li>
-        
-          <li>
-            <a href="/2022/0829/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">hexo+github部署个人网站</a>
-          </li>
-        
-          <li>
-            <a href="/2022/0828/MarkDown%E6%B5%8B%E8%AF%95/">markdown测试</a>
-          </li>
-        
-          <li>
-            <a href="/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
-          </li>
-        
-      </ul>
     </div>
+    <div class="license-icon iconfont"></div>
   </div>
 
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/0828/MarkDown%E6%B5%8B%E8%AF%95/" title="markdown测试">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">markdown测试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">5</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-</aside>
-        
+            
+          </article>
+        </div>
       </div>
-      <a id="totop" href="#top"></a>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      <p>
-        <a href="/sitemap.xml">网站地图</a>
-        <span> | </span><a href="/atom.xml">订阅本站</a>
-        <span> | </span><a href="/about/">联系博主</a>
-      </p>
-      
-        <p>
-          <i class="fa fa-visitors"></i>
-          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
-          ，
-          <i class="fa fa-views"></i>
-          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
-        </p>
-      
-      <p>
-        <span>Copyright &copy; 2022 John Doe.</span>
-        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
-        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
-      </p>
     </div>
-  </div>
-</footer>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
   </div>
-  
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-<script src="/js/search.json.js"></script>
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
+</div>
 
 
 
 
 
   
-<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
 
 
 
   
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
-<script src="/localshare/js/social-share.js"></script>
 
     
-<script src="/localshare/js/qrcode.js"></script>
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
   
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
 
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
