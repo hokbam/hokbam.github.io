@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离 | 阿Ben的网络日志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿Ben的网络日志</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的学习笔记与生活感想</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-08-30T10:30:00.000Z" itemprop="datePublished">2022年08月30日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/08/30/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>手里有两台设备，<strong>单网口</strong>OpenWRT设备 + 网管型交换机。我们该如何通过VLAN 实现网口拓展、流量隔离，进而将N1盒子如何成为一个主路由？</p>
+<p>要回答这个问题，我们要先了解一下什么是VLAN？为什么需要VLAN？</p>
+<h2 id="VLAN是什么"><a href="#VLAN是什么" class="headerlink" title="VLAN是什么"></a>VLAN是什么</h2><p><strong>虚拟局域网</strong>（<strong>Virtual Local Area Network</strong>或简写<strong>VLAN</strong>,<strong>V-LAN</strong>）是一种建构于局域网交换技术（LAN Switch）的<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%B5%A1%E7%AE%A1%E7%90%86">网络管理</a>的技术，网管人员可以借此透过控制<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8F%9B%E5%99%A8">交换机</a>有效分派出入局域网的报文到正确的出入端口，达到对不同实体局域网中的设备进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%80%BB%E8%BE%91%E5%88%86%E7%BE%A4&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">逻辑分群</a>（Grouping）管理，并降低局域网内大量数据流通时，因无用报文过多导致壅塞的问题，以及提升局域网的信息安全保障。[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/107093485#ref_1">1]</a></p>
+<h2 id="为什么需要VLAN"><a href="#为什么需要VLAN" class="headerlink" title="为什么需要VLAN"></a>为什么需要VLAN</h2><p>简单来说当我们使用<strong>单网口</strong>路由器的时候，用一个网口同时处理WAN口与LAN口数据时容易造成报文壅塞，严重时可能造成网络风暴。所以即使我们只有一个网口，我们希望通过某些方式做到逻辑隔离，有效减少无用报文提高数据交换效率。</p>
+<p>而VLAN便是一种实现<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8D%A2%E6%9C%BA">交换机</a><a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%B9%99%E5%A4%AA%E7%B6%B2%E8%B7%AF">以太网</a>广播隔离的一种理想解决方案，它可以为网络提供以下作用：</p>
+<blockquote>
+<p>1 广播控制<br>2 带宽利用<br>3 降低延迟<br>4 安全性</p>
+</blockquote>
+<p>所以单网口路由器加上VLAN便可以做为一个主力路由器。</p>
+<blockquote>
+<p>为保证不同交换机能通过VLAN通信，1995年<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/IEEE">IEEE</a>802委员会发表了<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/IEEE_802.1Q">802.1Q</a>VLAN技术的实现标准与帧结构。具体细节可自行Google查询。</p>
+</blockquote>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><blockquote>
+<p>1 支持基于IEEE 802.1Q VLAN管理交换机<br>2 单网口OpenWRT设备（N1盒子）</p>
+</blockquote>
+<p>题图是楼主自家的设备集合，一个N1盒子、一个8口全千兆管理型交换机、一个无线路由器。</p>
+<h2 id="基本原理与拓扑架构"><a href="#基本原理与拓扑架构" class="headerlink" title="基本原理与拓扑架构"></a>基本原理与拓扑架构</h2><p>通过交换机的管理页面，将网络划分为两个VLAN：</p>
+<blockquote>
+<p><strong>VLAN10</strong> 为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=LAN%E5%8F%A3%E7%BD%91%E7%BB%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">LAN口网络</a>，包含端口2-6<br><strong>VLAN100</strong> 为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=WAN%E5%8F%A3%E7%BD%91%E7%BB%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">WAN口网络</a>，包含端口1-2</p>
+</blockquote>
+<p>其中端口2为公用端口(tagged port)，同时处理WAN口、LAN口两种流量，其他口为untagged port。</p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-29013c986520bdfe16c1d2d22eeadb88_720w-20211207231200112.jpg" alt="img">VLAN 设置 t&#x3D;tagged u&#x3D;untagged</p>
+<p>然后为每个端口设置PVID，其作用是为所有不带标签的VLAN数据流进来时打上标签。</p>
+<p>如光猫数据从端口1进来此时不带任何标签，经过端口1后便打上了<strong>100</strong>的标签，随后在VLAN100 的 VLAN 里面流通，找到唯一一个出口端口2，带上标签进入OpenWRT路由器。</p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-132a7a0a78fb2a1335a3841b2ef6b5a0_720w-20211207231154504.jpg" alt="img">PVID设置</p>
+<p>结合以下拓扑图，我们不难分析数据走向（相同颜色即为同一VLAN）：</p>
+<blockquote>
+<p>1 无标签数据从光猫进入交换机的网口1，被打上100的标签<br>2 标签100只在属于VLAN100，所以找到唯一的一个可连接的端口2，从端口2进入路由器<br>3 路由器设置了WAN口连接VLAN100，LAN口连VLAN10。CPU处理带标签100的数据后，然后转换成标签10的数据流回端口2<br>4 数据流向端口3-6，从端口出去时将ID去掉，给到无线路由器或者有线PC等设备(各种设备对VLAN无感知)<br>5 从WAN到LAN的数据流结束</p>
+</blockquote>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2eee16fe23e3da0611a63f394e4b7851_720w-20211207231148429.jpg" alt="img">单网口OpenWRT设备 + 网管交换机的VLAN拓扑</p>
+<h2 id="如何设置"><a href="#如何设置" class="headerlink" title="如何设置"></a>如何设置</h2><p>请参考视频资料，<strong>单网口OpenWRT设备如何设置VLAN？N1盒子如何成为主路由？最终实现网口拓展、流量隔离：</strong><a href="https://link.zhihu.com/?target=https://www.bilibili.com/video/BV1B7411E7sK/">https://www.bilibili.com/video/BV1B7411E7sK/</a>。</p>
+<blockquote>
+<p>1 交换机设置</p>
+</blockquote>
+<p><strong>VLAN划分设置</strong></p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-d0c52fcc3807c30f48e80b8bded3e423_720w-20211207231215687.jpg" alt="img">VLAN划分</p>
+<p><strong>PVID设置</strong></p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2f617da9a8eae1af35cc405ccc9c064e_720w-20211207231224554.jpg" alt="img">PVID设置</p>
+<blockquote>
+<p>2 OpenWRT接口设置</p>
+</blockquote>
+<p>LAN桥接到 **<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=eth0.10&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">eth0.10</a>**，即使用VLAN10</p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-bc62c43376e12cb967e6d032bbd00028_720w.jpg" alt="img">LAN口设置</p>
+<p>WAN口设置到 **<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=eth0.100&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">eth0.100</a>**，即连接到VLAN100。</p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-0aef72ddc25a3dd3627dc60f585171f7_720w.jpg" alt="img">WAN口设置</p>
+<blockquote>
+<p>3 防火墙设置</p>
+</blockquote>
+<p>将之前<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">单臂路由</a>时所设置的防火墙规则删掉或者注释掉，换为第二行的规则。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line">iptables -t nat -I POSTROUTING -o pppoe-WAN -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过VLAN的划分我们的单网口路由即可摇身一变成主路由，同时WAN口&#x2F;LAN口的数据流量不冲突、不会造成潜在的风险。剩余的3-8口都可以作为LAN口，只需要把网络设备接上即可正常上网。</p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VLAN%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">VLAN是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81VLAN"><span class="toc-text">为什么需要VLAN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="toc-text">前置条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8B%93%E6%89%91%E6%9E%B6%E6%9E%84"><span class="toc-text">基本原理与拓扑架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE"><span class="toc-text">如何设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2022/08/30/单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离/">http://example.com/2022/08/30/单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/08/29/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          hexo+github部署个人网站
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/30/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          阿里云申请免费SSL证书并部署到docker中的halo
+        
+      </div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/30/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/">阿里云申请免费SSL证书并部署到docker中的halo</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/30/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/">单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/29/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">hexo+github部署个人网站</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/28/MarkDown%E6%B5%8B%E8%AF%95/">markdown测试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 John Doe.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>

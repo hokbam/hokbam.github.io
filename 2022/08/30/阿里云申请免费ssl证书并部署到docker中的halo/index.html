@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>阿里云申请免费SSL证书并部署到docker中的halo | 阿Ben的网络日志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿Ben的网络日志</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的学习笔记与生活感想</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-阿里云申请免费ssl证书并部署到docker中的halo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      阿里云申请免费SSL证书并部署到docker中的halo
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-08-30T10:30:00.000Z" itemprop="datePublished">2022年08月30日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/08/30/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="阿里云申请免费SSL证书并部署到docker中的halo"><a href="#阿里云申请免费SSL证书并部署到docker中的halo" class="headerlink" title="阿里云申请免费SSL证书并部署到docker中的halo"></a>阿里云申请免费SSL证书并部署到docker中的halo</h1><h3 id="1、申请阿里云免费ssl"><a href="#1、申请阿里云免费ssl" class="headerlink" title="1、申请阿里云免费ssl"></a>1、申请阿里云免费ssl</h3><p>0元购买地址：<a target="_blank" rel="noopener" href="https://common-buy.aliyun.com/?spm=5176.7968328.J_8413632810.2.572c65c30DV07n&commodityCode=cas_dv_public_cn&request=%7B%22ord_time%22:%221:Year%22,%22order_num%22:1,%22product%22:%22cert_product%22,%22domain%22:%22all%22,%22productCode%22:%22symantec-dv-1-starter%22,%22service_num%22:1%7D">云盾证书服务</a></p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204171530321.png" alt="image-20211204171530321"></p>
+<h4 id="管理证书"><a href="#管理证书" class="headerlink" title="管理证书"></a>管理证书</h4><h6 id="SSL证书管理控制台–-gt-SSL证书–-gt-免费证书，创建证书"><a href="#SSL证书管理控制台–-gt-SSL证书–-gt-免费证书，创建证书" class="headerlink" title="SSL证书管理控制台–&gt;SSL证书–&gt;免费证书，创建证书"></a>SSL证书管理控制台–&gt;SSL证书–&gt;免费证书，创建证书</h6><p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204171948446.png" alt="image-20211204171948446"></p>
+<h6 id="创建证书之后，点击“证书申请”，填写相关信息提交申请。"><a href="#创建证书之后，点击“证书申请”，填写相关信息提交申请。" class="headerlink" title="创建证书之后，点击“证书申请”，填写相关信息提交申请。"></a>创建证书之后，点击“证书申请”，填写相关信息提交申请。</h6><p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204172126555.png" alt="image-20211204172126555"></p>
+<h6 id="填写资料提交申请的过程中，需要进行域名解析，例如："><a href="#填写资料提交申请的过程中，需要进行域名解析，例如：" class="headerlink" title="填写资料提交申请的过程中，需要进行域名解析，例如："></a>填写资料提交申请的过程中，需要进行域名解析，例如：</h6><p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204172523532.png" alt="image-20211204172523532"></p>
+<h3 id="2、部署到网站"><a href="#2、部署到网站" class="headerlink" title="2、部署到网站"></a>2、部署到网站</h3><h4 id="2-1、下载证书"><a href="#2-1、下载证书" class="headerlink" title="2.1、下载证书"></a>2.1、下载证书</h4><p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204172635685.png" alt="image-20211204172635685"></p>
+<p>下载完后得到两个文件，如下</p>
+<img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204172702041.png" alt="image-20211204172702041"   align="left"/>
+
+
+
+<h4 id="2-2-、上传证书到云服务器"><a href="#2-2-、上传证书到云服务器" class="headerlink" title="2.2 、上传证书到云服务器"></a>2.2 、上传证书到云服务器</h4><p>创建证书目录，并使用sftp工具将上传到该目录，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /smartwirecom/cert</span><br></pre></td></tr></table></figure>
+
+<p>配置nginx.conf文件，注意80端口、445端口是否被其他软件或nginx的server占用，可以使用<code>lsof -i:80</code>指令查询占用情况。</p>
+<p>配置文件如下（可以用vi、vim或sftp工具修改）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">监听80端口，并将其重定向到https</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line"> </span><br><span class="line">    # 将smartwirecom.net改为您自己的域名</span><br><span class="line">    server_name smartwirecom.net;</span><br><span class="line">    # 上传文件大小的限制</span><br><span class="line">	client_max_body_size 1024m;</span><br><span class="line">    # 将所有http请求通过rewrite重定向到https。</span><br><span class="line">    rewrite ^(.*)$ https://$host$1 permanent;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 配置ssl</span></span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"> </span><br><span class="line">    # 将smartwirecom.net改为您自己的域名</span><br><span class="line">    server_name smartwirecom.net;</span><br><span class="line">    # 上传文件大小的限制</span><br><span class="line">	client_max_body_size 1024m;</span><br><span class="line">    # 将证书文件存放路径和证书的密钥文件名替换成自己存放路径与证书的密钥文件名。</span><br><span class="line">    ssl_certificate /smartwirecom/cert/xxxxx_smartwirecom.net.pem;</span><br><span class="line">    ssl_certificate_key /smartwirecom/cert/xxxxx_smartwirecom.net.key;</span><br><span class="line"> </span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"> </span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header HOST $host;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line"> </span><br><span class="line">        # 下面8090是您配置Halo的端口号，笔者这里使用默认端口。</span><br><span class="line">        proxy_pass http://127.0.0.1:8090/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重启nignx：<code>systemctl restart nginx</code> 或者<code>nginx -s reload</code></p>
+<p>效果：</p>
+<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/image-20211204173848545.png" alt="image-20211204173848545"></p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9SSL%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo"><span class="toc-text">阿里云申请免费SSL证书并部署到docker中的halo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%94%B3%E8%AF%B7%E9%98%BF%E9%87%8C%E4%BA%91%E5%85%8D%E8%B4%B9ssl"><span class="toc-text">1、申请阿里云免费ssl</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6"><span class="toc-text">管理证书</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#SSL%E8%AF%81%E4%B9%A6%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E2%80%93-gt-SSL%E8%AF%81%E4%B9%A6%E2%80%93-gt-%E5%85%8D%E8%B4%B9%E8%AF%81%E4%B9%A6%EF%BC%8C%E5%88%9B%E5%BB%BA%E8%AF%81%E4%B9%A6"><span class="toc-text">SSL证书管理控制台–&gt;SSL证书–&gt;免费证书，创建证书</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%AF%81%E4%B9%A6%E4%B9%8B%E5%90%8E%EF%BC%8C%E7%82%B9%E5%87%BB%E2%80%9C%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7%E2%80%9D%EF%BC%8C%E5%A1%AB%E5%86%99%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E6%8F%90%E4%BA%A4%E7%94%B3%E8%AF%B7%E3%80%82"><span class="toc-text">创建证书之后，点击“证书申请”，填写相关信息提交申请。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A1%AB%E5%86%99%E8%B5%84%E6%96%99%E6%8F%90%E4%BA%A4%E7%94%B3%E8%AF%B7%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A"><span class="toc-text">填写资料提交申请的过程中，需要进行域名解析，例如：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%83%A8%E7%BD%B2%E5%88%B0%E7%BD%91%E7%AB%99"><span class="toc-text">2、部署到网站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6"><span class="toc-text">2.1、下载证书</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E3%80%81%E4%B8%8A%E4%BC%A0%E8%AF%81%E4%B9%A6%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">2.2 、上传证书到云服务器</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://example.com/2022/08/30/阿里云申请免费ssl证书并部署到docker中的halo/">http://example.com/2022/08/30/阿里云申请免费ssl证书并部署到docker中的halo/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/08/30/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">
+        
+          单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/30/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/">阿里云申请免费SSL证书并部署到docker中的halo</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/30/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/">单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/29/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">hexo+github部署个人网站</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/28/MarkDown%E6%B5%8B%E8%AF%95/">markdown测试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/28/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/">如何离线升级openssh和openssl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 John Doe.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </div>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+    
+<script src="/localshare/js/social-share.js"></script>
+
+    
+<script src="/localshare/js/qrcode.js"></script>
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+</body>
+</html>
