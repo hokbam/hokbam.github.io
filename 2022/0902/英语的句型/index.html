@@ -16,25 +16,20 @@
   <meta name="author" content="Ben">
   <meta name="keywords" content="">
   
-    <meta name="description" content="手里有两台设备，单网口OpenWRT设备 + 网管型交换机。我们该如何通过VLAN 实现网口拓展、流量隔离，进而将N1盒子如何成为一个主路由？ 要回答这个问题，我们要先了解一下什么是VLAN？为什么需要VLAN？ VLAN是什么虚拟局域网（Virtual Local Area Network或简写VLAN,V-LAN）是一种建构于局域网交换技术（LAN Switch）的网络管理的技术，网管人员可以">
+    <meta name="description" content="Sentence Patterns（句子模型）“Sentence patterns” is just another way talk about the way a sentence is put together; the order of the elements（要素） in the sentence; sentence construction（结构）. Some sources say">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离">
-<meta property="og:url" content="https://benlogs.com/2022/0830/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/index.html">
+<meta property="og:title" content="Sentence Patterns（句子模型）">
+<meta property="og:url" content="https://benlogs.com/2022/0902/%E8%8B%B1%E8%AF%AD%E7%9A%84%E5%8F%A5%E5%9E%8B/index.html">
 <meta property="og:site_name" content="阿Ben的网络日志">
-<meta property="og:description" content="手里有两台设备，单网口OpenWRT设备 + 网管型交换机。我们该如何通过VLAN 实现网口拓展、流量隔离，进而将N1盒子如何成为一个主路由？ 要回答这个问题，我们要先了解一下什么是VLAN？为什么需要VLAN？ VLAN是什么虚拟局域网（Virtual Local Area Network或简写VLAN,V-LAN）是一种建构于局域网交换技术（LAN Switch）的网络管理的技术，网管人员可以">
+<meta property="og:description" content="Sentence Patterns（句子模型）“Sentence patterns” is just another way talk about the way a sentence is put together; the order of the elements（要素） in the sentence; sentence construction（结构）. Some sources say">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-29013c986520bdfe16c1d2d22eeadb88_720w-20211207231200112.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-132a7a0a78fb2a1335a3841b2ef6b5a0_720w-20211207231154504.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2eee16fe23e3da0611a63f394e4b7851_720w-20211207231148429.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-d0c52fcc3807c30f48e80b8bded3e423_720w-20211207231215687.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2f617da9a8eae1af35cc405ccc9c064e_720w-20211207231224554.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-bc62c43376e12cb967e6d032bbd00028_720w.jpg">
-<meta property="og:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-0aef72ddc25a3dd3627dc60f585171f7_720w.jpg">
-<meta property="article:published_time" content="2022-08-30T10:30:00.000Z">
-<meta property="article:modified_time" content="2022-08-30T09:27:06.767Z">
+<meta property="article:published_time" content="2022-09-02T04:30:00.000Z">
+<meta property="article:modified_time" content="2022-09-02T06:41:47.650Z">
 <meta property="article:author" content="Ben">
+<meta property="article:tag" content="grammar">
+<meta property="article:tag" content="english">
+<meta property="article:tag" content="Sentence">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-29013c986520bdfe16c1d2d22eeadb88_720w-20211207231200112.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -50,7 +45,7 @@ gtag('config', 'G-BNZ57LLBF3');
 </script>
 
   
-  <title>单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离 - 阿Ben的网络日志</title>
+  <title>Sentence Patterns（句子模型） - 阿Ben的网络日志</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,7 +187,7 @@ gtag('config', 'G-BNZ57LLBF3');
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离"></span>
+            <span id="subtitle" data-typed-text="Sentence Patterns（句子模型）"></span>
           
         </div>
 
@@ -203,8 +198,8 @@ gtag('config', 'G-BNZ57LLBF3');
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-30 18:30" pubdate>
-          2022年8月30日 晚上
+        <time datetime="2022-09-02 12:30" pubdate>
+          2022年9月2日 下午
         </time>
       </span>
     
@@ -256,63 +251,97 @@ gtag('config', 'G-BNZ57LLBF3');
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离</h1>
+            <h1 style="display: none">Sentence Patterns（句子模型）</h1>
             
             
               <div class="markdown-body">
                 
-                <p>手里有两台设备，<strong>单网口</strong>OpenWRT设备 + 网管型交换机。我们该如何通过VLAN 实现网口拓展、流量隔离，进而将N1盒子如何成为一个主路由？</p>
-<p>要回答这个问题，我们要先了解一下什么是VLAN？为什么需要VLAN？</p>
-<h2 id="VLAN是什么"><a href="#VLAN是什么" class="headerlink" title="VLAN是什么"></a>VLAN是什么</h2><p><strong>虚拟局域网</strong>（<strong>Virtual Local Area Network</strong>或简写<strong>VLAN</strong>,<strong>V-LAN</strong>）是一种建构于局域网交换技术（LAN Switch）的<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%B5%A1%E7%AE%A1%E7%90%86">网络管理</a>的技术，网管人员可以借此透过控制<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8F%9B%E5%99%A8">交换机</a>有效分派出入局域网的报文到正确的出入端口，达到对不同实体局域网中的设备进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%80%BB%E8%BE%91%E5%88%86%E7%BE%A4&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">逻辑分群</a>（Grouping）管理，并降低局域网内大量数据流通时，因无用报文过多导致壅塞的问题，以及提升局域网的信息安全保障。[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/107093485#ref_1">1]</a></p>
-<h2 id="为什么需要VLAN"><a href="#为什么需要VLAN" class="headerlink" title="为什么需要VLAN"></a>为什么需要VLAN</h2><p>简单来说当我们使用<strong>单网口</strong>路由器的时候，用一个网口同时处理WAN口与LAN口数据时容易造成报文壅塞，严重时可能造成网络风暴。所以即使我们只有一个网口，我们希望通过某些方式做到逻辑隔离，有效减少无用报文提高数据交换效率。</p>
-<p>而VLAN便是一种实现<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8D%A2%E6%9C%BA">交换机</a><a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/%E4%B9%99%E5%A4%AA%E7%B6%B2%E8%B7%AF">以太网</a>广播隔离的一种理想解决方案，它可以为网络提供以下作用：</p>
+                <h1 id="Sentence-Patterns（句子模型）"><a href="#Sentence-Patterns（句子模型）" class="headerlink" title="Sentence Patterns（句子模型）"></a>Sentence Patterns（句子模型）</h1><p>“Sentence patterns” is just another way talk about the way a sentence is put together; the order of the elements（要素） in the sentence; sentence construction（结构）. Some sources say there are six English sentence patterns; some say eight. A few sources list even more. Here are the ones we feel are the most common（常见的&#x2F;普通的）, and the easiest to recognize（识别&#x2F;辨别）:</p>
+<h3 id="1-Subject-Verb-S-V-（主-谓-x2F-动）"><a href="#1-Subject-Verb-S-V-（主-谓-x2F-动）" class="headerlink" title="1. Subject + Verb (S-V)（主+谓&#x2F;动）"></a>1. Subject + Verb (S-V)（主+谓&#x2F;动）</h3><p>This is the simplest kind of sentence. It consists of a subject, a verb, and possibly some adjectives（形容词）, adverbs（副词）, or <u>prepositional phrases（介词短语）</u>. There are no <u>direct objects（直接宾语&#x2F;受词）</u>, indirect objects（间接宾语）, or complements（宾语补足语）.</p>
+<ul>
+<li><p>Abraham speaks fluently. (subject, verb, adverb)</p>
 <blockquote>
-<p>1 广播控制<br>2 带宽利用<br>3 降低延迟<br>4 安全性</p>
+<p>亚伯拉罕说话流利。（主+谓+副）</p>
 </blockquote>
-<p>所以单网口路由器加上VLAN便可以做为一个主力路由器。</p>
+</li>
+<li><p>Many of the class members write well in class. (subject, verb, adverbs) (The “complete” subject is “Many of the class members”–a noun phrase.)</p>
 <blockquote>
-<p>为保证不同交换机能通过VLAN通信，1995年<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/IEEE">IEEE</a>802委员会发表了<a href="https://link.zhihu.com/?target=https://zh.wikipedia.org/wiki/IEEE_802.1Q">802.1Q</a>VLAN技术的实现标准与帧结构。具体细节可自行Google查询。</p>
+<p> “Many of the class members”为名词短语。</p>
 </blockquote>
-<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><blockquote>
-<p>1 支持基于IEEE 802.1Q VLAN管理交换机<br>2 单网口OpenWRT设备（N1盒子）</p>
+</li>
+</ul>
+<h3 id="2-Verb-Subject-V-S-（动-主-介词短语）"><a href="#2-Verb-Subject-V-S-（动-主-介词短语）" class="headerlink" title="2. Verb + Subject (V-S)（动+主+介词短语）"></a>2. Verb + Subject (V-S)（动+主+介词短语）</h3><p>Sentences in English usually have the subject come first, followed by the verb. But when a sentence begins with <em>there is, there was, there are, there were</em>, the verb comes first, followed by the subject. The word <em>There</em> is never a subject!</p>
+<ul>
+<li>There is a strange shadow in the woods. (verb, subject–the complete subject is the noun phrase <em>a strange shadow</em>, adverb)</li>
+<li>There were no leftovers（剩饭菜） after the buffet（自助餐）. (verb, subject, adverb)</li>
+</ul>
+<h3 id="3-Subject-Verb-Direct-Object-S-V-DO"><a href="#3-Subject-Verb-Direct-Object-S-V-DO" class="headerlink" title="3. Subject + Verb + Direct Object (S-V-DO)"></a>3. Subject + Verb + Direct Object (S-V-DO)</h3><ul>
+<li><p>Andrew composes music. (subject, verb, direct object.)</p>
+</li>
+<li><p>Matthew helps others in several English practice rooms. (subject, verb, direct object, adverb)</p>
+</li>
+<li><p>Helen tells jokes to make people smile. (subject, verb, direct object, adverb)</p>
+</li>
+</ul>
+<hr>
+<h6 id="adverb-副词"><a href="#adverb-副词" class="headerlink" title="adverb 副词"></a>adverb 副词</h6><blockquote>
+<p>英语wiki说明：</p>
+<p>An adverb is a word that modifies（修饰） a verb, adjective, another adverb, determiner（限定词）, noun phrase, clause（从句）, or sentence. Adverbs <u>typically express manner（通常表示方式）</u>, place, time, frequency, degree（程度）, level of certainty（确定）, etc（&#x3D;et cetera (缩)等等）., answering questions such as how?, in what way?, when?, where?, and to what extent?. This function is called the adverbial function, and may be realized（认识&#x2F;实现） by single words (adverbs) or by multi-word expressions (adverbial phrases and adverbial clauses).<br>Adverbs are <u>traditionally regarded（传统上被视为）</u> as one of <u>the parts of speech（词性）</u>. However, <u>modern linguists（现代语言学家）</u> note that it has come to be used as a kind of “catch-all” category, used to <u>classify（将..分类）</u> words with various（各种各样的） different types of <u>syntactic behavior（句法行为）</u>, not necessarily having much in common except that they do not <u>fit into(适合&#x2F;适应；符合)</u> any of the other <u>available categories(可用类别)</u> (noun, adjective, preposition, etc.)</p>
 </blockquote>
-<p>题图是楼主自家的设备集合，一个N1盒子、一个8口全千兆管理型交换机、一个无线路由器。</p>
-<h2 id="基本原理与拓扑架构"><a href="#基本原理与拓扑架构" class="headerlink" title="基本原理与拓扑架构"></a>基本原理与拓扑架构</h2><p>通过交换机的管理页面，将网络划分为两个VLAN：</p>
+<hr>
+<h3 id="4-Subject-Verb-Complement-S-V-SC"><a href="#4-Subject-Verb-Complement-S-V-SC" class="headerlink" title="4. Subject + Verb + Complement (S-V-SC)"></a>4. Subject + Verb + Complement (S-V-SC)</h3><p>A <strong>complement</strong> is a <strong>word</strong> or group of words that <strong>describe or rename</strong> the subject. Complements follow a <u>linking verb</u>. There are two kinds of subject complements: <strong>1)</strong> <strong><u>predicate nominative</u></strong>, which is a noun or pronoun that renames or <u>classifies</u> the subject of the sentence and <strong>2)</strong> <strong><u>predicate adjective</u>,</strong> which is an adjective that describes the subject of the sentence.</p>
+<ul>
+<li><p>Mother looks tired. (subject, verb, complement–predicate adjective)</p>
+</li>
+<li><p>Some students in the class are engineers. (the noun phrase <em>Some students in the class</em> is the complete subject, verb, complement–predicate nominative)</p>
+</li>
+<li><p>The men are handsome, the women are clever, and the children are above-average. (compound sentence of three independent clauses, so three subjects, three verbs, three complements–all predicate adjectives)</p>
+</li>
+</ul>
+<hr>
 <blockquote>
-<p><strong>VLAN10</strong> 为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=LAN%E5%8F%A3%E7%BD%91%E7%BB%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">LAN口网络</a>，包含端口2-6<br><strong>VLAN100</strong> 为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=WAN%E5%8F%A3%E7%BD%91%E7%BB%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">WAN口网络</a>，包含端口1-2</p>
+<p>生词：</p>
+<ul>
+<li>SC&#x3D;Subject Complement&#x3D;主词补语；</li>
+<li>linking verb&#x3D;系动词；</li>
+<li>predicate nominative&#x3D;谓语主格；</li>
+<li>predicate adjective&#x3D;谓语性形容词;</li>
+<li>classifies&#x3D;class +ify+三单形式&#x3D;将…分类，<a target="_blank" rel="noopener" href="https://wenney.com/archives/di-san-ren-cheng-dan-shu">三单详解</a>；</li>
+<li></li>
+</ul>
 </blockquote>
-<p>其中端口2为公用端口(tagged port)，同时处理WAN口、LAN口两种流量，其他口为untagged port。</p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-29013c986520bdfe16c1d2d22eeadb88_720w-20211207231200112.jpg" srcset="/img/loading.gif" lazyload alt="img">VLAN 设置 t&#x3D;tagged u&#x3D;untagged</p>
-<p>然后为每个端口设置PVID，其作用是为所有不带标签的VLAN数据流进来时打上标签。</p>
-<p>如光猫数据从端口1进来此时不带任何标签，经过端口1后便打上了<strong>100</strong>的标签，随后在VLAN100 的 VLAN 里面流通，找到唯一一个出口端口2，带上标签进入OpenWRT路由器。</p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-132a7a0a78fb2a1335a3841b2ef6b5a0_720w-20211207231154504.jpg" srcset="/img/loading.gif" lazyload alt="img">PVID设置</p>
-<p>结合以下拓扑图，我们不难分析数据走向（相同颜色即为同一VLAN）：</p>
-<blockquote>
-<p>1 无标签数据从光猫进入交换机的网口1，被打上100的标签<br>2 标签100只在属于VLAN100，所以找到唯一的一个可连接的端口2，从端口2进入路由器<br>3 路由器设置了WAN口连接VLAN100，LAN口连VLAN10。CPU处理带标签100的数据后，然后转换成标签10的数据流回端口2<br>4 数据流向端口3-6，从端口出去时将ID去掉，给到无线路由器或者有线PC等设备(各种设备对VLAN无感知)<br>5 从WAN到LAN的数据流结束</p>
-</blockquote>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2eee16fe23e3da0611a63f394e4b7851_720w-20211207231148429.jpg" srcset="/img/loading.gif" lazyload alt="img">单网口OpenWRT设备 + 网管交换机的VLAN拓扑</p>
-<h2 id="如何设置"><a href="#如何设置" class="headerlink" title="如何设置"></a>如何设置</h2><p>请参考视频资料，<strong>单网口OpenWRT设备如何设置VLAN？N1盒子如何成为主路由？最终实现网口拓展、流量隔离：</strong><a href="https://link.zhihu.com/?target=https://www.bilibili.com/video/BV1B7411E7sK/">https://www.bilibili.com/video/BV1B7411E7sK/</a>。</p>
-<blockquote>
-<p>1 交换机设置</p>
-</blockquote>
-<p><strong>VLAN划分设置</strong></p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-d0c52fcc3807c30f48e80b8bded3e423_720w-20211207231215687.jpg" srcset="/img/loading.gif" lazyload alt="img">VLAN划分</p>
-<p><strong>PVID设置</strong></p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-2f617da9a8eae1af35cc405ccc9c064e_720w-20211207231224554.jpg" srcset="/img/loading.gif" lazyload alt="img">PVID设置</p>
-<blockquote>
-<p>2 OpenWRT接口设置</p>
-</blockquote>
-<p>LAN桥接到 **<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=eth0.10&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">eth0.10</a>**，即使用VLAN10</p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-bc62c43376e12cb967e6d032bbd00028_720w.jpg" srcset="/img/loading.gif" lazyload alt="img">LAN口设置</p>
-<p>WAN口设置到 **<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=eth0.100&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">eth0.100</a>**，即连接到VLAN100。</p>
-<p><img src="https://www.smartwirecom.net/upload/img/upload/2021/12/v2-0aef72ddc25a3dd3627dc60f585171f7_720w.jpg" srcset="/img/loading.gif" lazyload alt="img">WAN口设置</p>
-<blockquote>
-<p>3 防火墙设置</p>
-</blockquote>
-<p>将之前<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:107093485%7D">单臂路由</a>时所设置的防火墙规则删掉或者注释掉，换为第二行的规则。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line">iptables -t nat -I POSTROUTING -o pppoe-WAN -j MASQUERADE</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过VLAN的划分我们的单网口路由即可摇身一变成主路由，同时WAN口&#x2F;LAN口的数据流量不冲突、不会造成潜在的风险。剩余的3-8口都可以作为LAN口，只需要把网络设备接上即可正常上网。</p>
+<hr>
+<h3 id="5-Subject-Verb-Indirect-Object-Direct-Object-S-V-IO-DO"><a href="#5-Subject-Verb-Indirect-Object-Direct-Object-S-V-IO-DO" class="headerlink" title="5. Subject + Verb + Indirect Object + Direct Object (S-V-IO-DO)"></a>5. Subject + Verb + Indirect Object + Direct Object (S-V-IO-DO)</h3><p>An indirect object tells <em>for whom</em> or <em>to whom</em>. If the indirect object comes after the direct object (in a prepositional phrase “to ________” or “for _______”), the sentence pattern is shown as <strong>S-V-DO-IO</strong>. Pronouns are usually used as indirect objects (but not always).</p>
+<ul>
+<li>I sent her a birthday present. (subject, verb, indirect object, direct object)</li>
+<li>Jay gave his dog a bone. (subject, verb, indirect object, direct object)</li>
+<li>Granny left Gary all of her money. (subject, verb, indirect object, direct object)</li>
+<li>Granny gave every last asset to Gary. (subject, verb, direct object, indirect object in a prepositional phrase)</li>
+</ul>
+<h3 id="6-Subject-Verb-Direct-Object-Object-Complement-S-V-DO-OC"><a href="#6-Subject-Verb-Direct-Object-Object-Complement-S-V-DO-OC" class="headerlink" title="6. Subject + Verb + Direct Object + Object Complement (S-V-DO-OC)"></a>6. Subject + Verb + Direct Object + Object Complement (S-V-DO-OC)</h3><p>This pattern isn’t as common as the others, but it is used. <strong>An object complement is a word or group of words that renames, describes, or classifies the direct object.</strong> Object complements are nouns or adjectives and follow the object.</p>
+<ul>
+<li>Debbie left the window open during the rain storm. (subject, verb, direct object, object complement, adverb)</li>
+<li>The class picked Susie class representative. (subject, verb, direct object, object complement)</li>
+</ul>
+<h3 id="Sentence-Pattern-Quiz"><a href="#Sentence-Pattern-Quiz" class="headerlink" title="Sentence Pattern Quiz"></a>Sentence Pattern Quiz</h3><p>Some patterns in using clauses:</p>
+<ol>
+<li><p>Independent clause:  <em>We are happy about the approaching holiday season.</em></p>
+</li>
+<li><p>Two independent clauses joined with a coordinating conjunction: <em>We are happy about the approaching holiday season,</em> <em>and we look forward to a prosperous new year.</em></p>
+</li>
+<li><p>Two independent clauses, with no conjunction: <em>We are happy about the approaching holiday season; we look forward to a prosperous new year.</em></p>
+</li>
+<li><p>Two independent clauses with an independent marker (<em>therefore, moreover, thus, consequently, however, also</em> <em>are some</em>): <em>We are happy about the approaching holiday season; furthermore, we look forward to a prosperous new year.</em></p>
+</li>
+<li><p>Dependent marker (<em>because, since, while, although, if, until, when, as, after, then</em> <em>are some</em>), dependent clause, independent clause: <em>Because we are happy about the approaching holiday season, we are planning many parties and gatherings with friends.</em></p>
+</li>
+<li><p>Independent clause, dependent marker, dependent clause: <em>We are planning many parties and gatherings with friends, because we are happy about the approaching holiday season.</em></p>
+</li>
+<li><p>First part of an independent clause, unneeded clause or phrase, the rest of the independent clause: <em>We are planning many parties and gatherings, including formal and informal, with friends.</em></p>
+</li>
+<li><p>First part of an independent clause, essential clause or phrase, the rest of the independent clause: <em>We who are happy about the approaching holiday season are planning many parties and gatherings, formal and informal, with friends.</em></p>
+</li>
+</ol>
 
                 
               </div>
@@ -331,7 +360,7 @@ gtag('config', 'G-BNZ57LLBF3');
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BD%91%E7%BB%9C/" class="category-chain-item">网络</a>
+  <a href="/categories/English/" class="category-chain-item">English</a>
   
   
 
@@ -343,6 +372,17 @@ gtag('config', 'G-BNZ57LLBF3');
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/grammar/">#grammar</a>
+      
+        <a href="/tags/english/">#english</a>
+      
+        <a href="/tags/Sentence/">#Sentence</a>
+      
+    </div>
+  
 </div>
 
 
@@ -351,8 +391,8 @@ gtag('config', 'G-BNZ57LLBF3');
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离</div>
-      <div>https://benlogs.com/2022/0830/单网口OpenWRT设备 + 网管交换机通过VLAN 实现网口拓展、流量隔离/</div>
+      <div>Sentence Patterns（句子模型）</div>
+      <div>https://benlogs.com/2022/0902/英语的句型/</div>
     </div>
     <div class="license-meta">
       
@@ -364,7 +404,7 @@ gtag('config', 'G-BNZ57LLBF3');
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月30日</div>
+          <div>2022年9月2日</div>
         </div>
       
       
@@ -394,18 +434,12 @@ gtag('config', 'G-BNZ57LLBF3');
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/0830/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/" title="阿里云申请免费SSL证书并部署到docker中的halo">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">阿里云申请免费SSL证书并部署到docker中的halo</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/0829/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" title="hexo+github部署个人网站">
-                        <span class="hidden-mobile">hexo+github部署个人网站</span>
+                      <a href="/2022/0830/%E9%98%BF%E9%87%8C%E4%BA%91%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0docker%E4%B8%AD%E7%9A%84halo/" title="阿里云申请免费SSL证书并部署到docker中的halo">
+                        <span class="hidden-mobile">阿里云申请免费SSL证书并部署到docker中的halo</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

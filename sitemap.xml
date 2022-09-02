@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://benlogs.com/2022/0902/%E8%8B%B1%E8%AF%AD%E7%9A%84%E5%8F%A5%E5%9E%8B/</loc>
+    
+    <lastmod>2022-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/</loc>
+    
+    <lastmod>2022-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://benlogs.com/2022/0830/%E5%8D%95%E7%BD%91%E5%8F%A3OpenWRT%E8%AE%BE%E5%A4%87%20+%20%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%80%9A%E8%BF%87VLAN%20%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8F%A3%E6%8B%93%E5%B1%95%E3%80%81%E6%B5%81%E9%87%8F%E9%9A%94%E7%A6%BB/</loc>
     
     <lastmod>2022-08-30</lastmod>
@@ -37,15 +55,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://benlogs.com/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/</loc>
-    
-    <lastmod>2022-08-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://benlogs.com/</loc>
@@ -54,6 +63,48 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://benlogs.com/tags/grammar/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/tags/english/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/tags/Sentence/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/tags/gcc/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/tags/ssh/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/tags/ssl/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 
   
@@ -73,6 +124,13 @@
   
   <url>
     <loc>https://benlogs.com/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://benlogs.com/categories/English/</loc>
     <lastmod>2022-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
