@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://benlogs.com/about/index.html</loc>
+    
+    <lastmod>2022-09-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://benlogs.com/2022/0829/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</loc>
     
     <lastmod>2022-09-02</lastmod>
