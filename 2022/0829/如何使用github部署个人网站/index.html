@@ -23,19 +23,19 @@
 <meta property="og:site_name" content="阿Ben的网络日志">
 <meta property="og:description" content="使用hexo+github部署个人网站1、M1中安装hexo参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;546198492 1.1、node.js安装因为后面要用到npm install，而npm被集成到了node中，所以首先来安装下node.js。  下载地址：node.js下载 如下图：M1的选择ARM64那个   安装成功后，可在终端通过-v查看是否安装成功： 12nod">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164412189.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164456142.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164702438.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829170033201.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829170114947.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829165540742.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829165855141.png">
+<meta property="og:image" content="http://img.benlogs.com/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829164412189.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829164456142.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829164702438.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829170033201.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829170114947.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829165540742.png">
+<meta property="og:image" content="http://img.benlogs.com/img/image-20220829165855141.png">
 <meta property="article:published_time" content="2022-08-29T08:30:00.000Z">
-<meta property="article:modified_time" content="2022-08-29T09:02:37.451Z">
+<meta property="article:modified_time" content="2022-09-02T09:16:00.600Z">
 <meta property="article:author" content="Ben">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg">
+<meta name="twitter:image" content="http://img.benlogs.com/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -268,47 +268,47 @@ gtag('config', 'G-BNZ57LLBF3');
 <li>下载地址：<a href="https://link.zhihu.com/?target=https://nodejs.org/zh-cn/download/">node.js下载</a></li>
 <li>如下图：M1的选择ARM64那个</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="http://img.benlogs.com/img/v2-888c31276408642893c35a42836c8a3d_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>安装成功后，可在终端通过-v查看是否安装成功：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node <span class="literal">-v</span> <span class="comment">#查看node版本</span></span><br><span class="line">npm <span class="literal">-v</span> <span class="comment">#查看npm版本</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">node <span class="hljs-literal">-v</span> <span class="hljs-comment">#查看node版本</span><br>npm <span class="hljs-literal">-v</span> <span class="hljs-comment">#查看npm版本</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="1-2、安装hexo"><a href="#1-2、安装hexo" class="headerlink" title="1.2、安装hexo"></a>1.2、安装hexo</h3><p>安装hexo代码，在终端输入：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-cli</span> <span class="literal">-g</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm install hexo<span class="hljs-literal">-cli</span> <span class="hljs-literal">-g</span><br></code></pre></td></tr></table></figure>
 
 <p>我在执行这一步的时候报错提示：</p>
 <blockquote>
 <p>Error: EACCES: permission denied, mkdir ‘&#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;hexo-cli’</p>
 </blockquote>
 <p>搜了一下，是mac和win都很普遍的权限问题，解决方法如下：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown <span class="literal">-R</span> <span class="variable">$</span>(whoami) <span class="variable">$</span>(npm config get prefix)/&#123;lib/node_modules,bin,share&#125; <span class="comment">#修改权限范围</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">sudo chown <span class="hljs-literal">-R</span> <span class="hljs-variable">$</span>(whoami) <span class="hljs-variable">$</span>(npm config get prefix)/&#123;lib/node_modules,bin,share&#125; <span class="hljs-comment">#修改权限范围</span><br></code></pre></td></tr></table></figure>
 
 <p>然后再次执行<code>npm install hexo-cli -g</code>即可</p>
-<h4 id="1-3-初始化本地博客文件夹"><a href="#1-3-初始化本地博客文件夹" class="headerlink" title="1.3.初始化本地博客文件夹"></a>1.3.初始化本地博客文件夹</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 博客初始化，这里是创建的本地博客文件夹，执行后会自动创建，我这里图简洁，直接用了我网站的地址hihulu.github.io为文件名</span></span><br><span class="line">hexo init /Users/bentou/hexo/hihulu.github.io  </span><br><span class="line"><span class="built_in">cd</span> /Users/bentou/hexo/hihulu.github.io  <span class="comment"># 进入本地的博客文件夹</span></span><br><span class="line">hexo server <span class="comment"># 打开本地服务器预览</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-初始化本地博客文件夹"><a href="#1-3-初始化本地博客文件夹" class="headerlink" title="1.3.初始化本地博客文件夹"></a>1.3.初始化本地博客文件夹</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 博客初始化，这里是创建的本地博客文件夹，执行后会自动创建，我这里图简洁，直接用了我网站的地址hihulu.github.io为文件名</span><br>hexo init /Users/bentou/hexo/hihulu.github.io  <br><span class="hljs-built_in">cd</span> /Users/bentou/hexo/hihulu.github.io  <span class="hljs-comment"># 进入本地的博客文件夹</span><br>hexo server <span class="hljs-comment"># 打开本地服务器预览</span><br></code></pre></td></tr></table></figure>
 
 <p>以上执行后，你就可以通过访问本地网站“<a target="_blank" rel="noopener" href="http://localhost:4000/%E2%80%9D%EF%BC%8C%E7%9C%8B%E5%88%B0%E8%87%AA%E5%B7%B1%E7%BD%91%E7%AB%99%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A4%A7%E6%A6%82%E5%95%A6">http://localhost:4000/”，看到自己网站的一个大概啦</a></p>
 <h3 id="2、安装主题"><a href="#2、安装主题" class="headerlink" title="2、安装主题"></a>2、安装主题</h3><p>使用的主题：<a target="_blank" rel="noopener" href="https://github.com/chaooo/hexo-theme-BlueLake">https://github.com/chaooo/hexo-theme-BlueLake</a></p>
 <p>安装说明：<a target="_blank" rel="noopener" href="https://chaooo.github.io/2016/12/29/bluelake.html">https://chaooo.github.io/2016/12/29/bluelake.html</a></p>
-<h3 id="3、GitHub上部署"><a href="#3、GitHub上部署" class="headerlink" title="3、GitHub上部署"></a>3、GitHub上部署</h3><h4 id="3-1、创建仓库"><a href="#3-1、创建仓库" class="headerlink" title="3.1、创建仓库"></a>3.1、创建仓库</h4><p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164412189.png" srcset="/img/loading.gif" lazyload alt="image-20220829164412189"></p>
+<h3 id="3、GitHub上部署"><a href="#3、GitHub上部署" class="headerlink" title="3、GitHub上部署"></a>3、GitHub上部署</h3><h4 id="3-1、创建仓库"><a href="#3-1、创建仓库" class="headerlink" title="3.1、创建仓库"></a>3.1、创建仓库</h4><p><img src="http://img.benlogs.com/img/image-20220829164412189.png" srcset="/img/loading.gif" lazyload alt="image-20220829164412189"></p>
 <h4 id="3-2、配置git"><a href="#3-2、配置git" class="headerlink" title="3.2、配置git"></a>3.2、配置git</h4><p>在仓库的code页面，复制ssh链接：</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164456142.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="http://img.benlogs.com/img/image-20220829164456142.png" srcset="/img/loading.gif" lazyload></p>
 <p>在根_config.yml文件deploy中，填入ssh地址：</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829164702438.png" srcset="/img/loading.gif" lazyload alt="image-20220829164702438"></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:hokbam/hokbam.github.io.git</span> <span class="comment">#这个地址是从github仓库复制过来的ssh</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://img.benlogs.com/img/image-20220829164702438.png" srcset="/img/loading.gif" lazyload alt="image-20220829164702438"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:hokbam/hokbam.github.io.git</span> <span class="hljs-comment">#这个地址是从github仓库复制过来的ssh</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
 
 
 
 <p>当使用hexo d将项目push到GitHub时，可能会出错，因为本机中没有配置ssh信息：</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829170033201.png" srcset="/img/loading.gif" lazyload alt="image-20220829170033201"></p>
+<p><img src="http://img.benlogs.com/img/image-20220829170033201.png" srcset="/img/loading.gif" lazyload alt="image-20220829170033201"></p>
 <p>参考解决方案：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45434534/article/details/104567870">https://blog.csdn.net/weixin_45434534/article/details/104567870</a></p>
 <p>在mac终端进行如下操作：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;此处为GitHub的邮箱地址&quot;</span></span><br><span class="line">ssh -v git@github.com</span><br><span class="line">ssh-agent -s</span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">ssh-keygen -t rsa -C <span class="hljs-string">&quot;此处为GitHub的邮箱地址&quot;</span><br>ssh -v git@github.com<br>ssh-agent -s<br>ssh-add ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure>
 
 <p>将生成的.pub文件中的内容，在GitHub上创建SSH KEY</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829170114947.png" srcset="/img/loading.gif" lazyload alt="image-20220829170114947"></p>
+<p><img src="http://img.benlogs.com/img/image-20220829170114947.png" srcset="/img/loading.gif" lazyload alt="image-20220829170114947"></p>
 <p>GitHub网站路径：右上角头像-&gt;Setting：</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829165540742.png" srcset="/img/loading.gif" lazyload alt="image-20220829165540742"></p>
+<p><img src="http://img.benlogs.com/img/image-20220829165540742.png" srcset="/img/loading.gif" lazyload alt="image-20220829165540742"></p>
 <p>再次执行<code> hexo clean &amp;&amp; hexo deploy</code>，git上传成功：</p>
-<p><img src="https://raw.githubusercontent.com/hokbam/imgesupload/main/img/image-20220829165855141.png" srcset="/img/loading.gif" lazyload alt="image-20220829165855141"></p>
+<p><img src="http://img.benlogs.com/img/image-20220829165855141.png" srcset="/img/loading.gif" lazyload alt="image-20220829165855141"></p>
 
                 
               </div>
