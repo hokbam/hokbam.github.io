@@ -13,7 +13,7 @@ https://benlogs.com/tags/ssl/
 https://benlogs.com/tags/grammar/
 https://benlogs.com/tags/english/
 https://benlogs.com/tags/Sentence/
-https://benlogs.com/categories/Linux/
 https://benlogs.com/categories/%E7%BD%91%E7%BB%9C/
+https://benlogs.com/categories/Linux/
 https://benlogs.com/categories/English/
 https://benlogs.com/categories/Web/

@@ -76,7 +76,7 @@
 
   <url>
     <loc>https://benlogs.com/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,42 +84,42 @@
   
   <url>
     <loc>https://benlogs.com/tags/gcc/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/tags/ssh/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/tags/ssl/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/tags/grammar/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/tags/english/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/tags/Sentence/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -127,29 +127,29 @@
 
   
   <url>
-    <loc>https://benlogs.com/categories/Linux/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <loc>https://benlogs.com/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://benlogs.com/categories/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <loc>https://benlogs.com/categories/Linux/</loc>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/categories/English/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://benlogs.com/categories/Web/</loc>
-    <lastmod>2022-09-06</lastmod>
+    <lastmod>2022-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
