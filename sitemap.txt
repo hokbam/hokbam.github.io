@@ -1,4 +1,4 @@
-https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/
+https://benlogs.com/2022/0922/vboxmanage%E4%BD%BF%E7%94%A8/
 https://benlogs.com/2022/0829/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/
 https://benlogs.com/2022/0902/%E8%8B%B1%E8%AF%AD%E7%9A%84%E5%8F%A5%E5%9E%8B/
 https://benlogs.com/2022/0906/youtube%20english%20playlist/
@@ -14,6 +14,7 @@ https://benlogs.com/tags/ssl/
 https://benlogs.com/tags/grammar/
 https://benlogs.com/tags/english/
 https://benlogs.com/tags/Sentence/
+https://benlogs.com/tags/vbox/
 https://benlogs.com/categories/Linux/
 https://benlogs.com/categories/English/
 https://benlogs.com/categories/Web/

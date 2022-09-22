@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://benlogs.com/tags/ssl/"/>
+  <link rel="canonical" href="https://benlogs.com/tags/vbox/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -34,13 +34,13 @@
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
   <!-- 页面元数据 -->
-  <title>标签：ssl - 阿Ben的网络日志</title>
+  <title>标签：vbox - 阿Ben的网络日志</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="linux english - Ben - 阿Ben的网络日志">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿Ben的网络日志">
-<meta property="og:url" content="https://benlogs.com/tags/ssl/index.html">
+<meta property="og:url" content="https://benlogs.com/tags/vbox/index.html">
 <meta property="og:site_name" content="阿Ben的网络日志">
 <meta property="og:description" content="linux english">
 <meta property="og:locale" content="zh_CN">
@@ -2582,7 +2582,7 @@ gtag('config', 'G-BNZ57LLBF3');
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://benlogs.com/2022/0828/离线升级opensshopenssl/">
+  <link itemprop="mainEntityOfPage" href="https://benlogs.com/2022/0922/vboxmanage使用/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="阿Ben的网络日志">
   </span>
@@ -2600,27 +2600,17 @@ gtag('config', 'G-BNZ57LLBF3');
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/"  itemprop="url">
-        如何离线升级openssh和openssl
+      <a href="/2022/0922/vboxmanage%E4%BD%BF%E7%94%A8/"  itemprop="url">
+        linux中使用命令来管理虚拟机（vbox, VBoxManage）
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        如何离线升级openssh和openssl1、环境检查
-先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。
-1rpm -qa |grep gcc
+        linux中使用命令来管理虚拟机（vbox, VBoxManage）一、典型操作1.创建虚拟机1VBoxManage createvm --name Windows2016 --ostype “Windows2016_64” --register
 
-
-缺少
-
-正常应该是这样
-缺少则安装gcc等编译环境
-123#把相关的rpm包全部放到gcc文件夹#进入gcc文件夹，忽略依赖安装rpm -Uvh --force --nodeps *.rpm
-
-
-2、编译安装openssl下载最...
+2.添加Sata驱动器1VBoxManage storagectl Windows2016 --name &quot;SATA Controll...
       
     
   </div>
@@ -2628,7 +2618,7 @@ gtag('config', 'G-BNZ57LLBF3');
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2022-08-28T18:30:00+08:00">2022-08-28</time>
+        <time itemprop="dateCreated datePublished" datetime="2022-09-22T18:30:00+08:00">2022-09-22</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/Linux/">Linux</a>
@@ -2641,7 +2631,7 @@ gtag('config', 'G-BNZ57LLBF3');
       </div>
       
         <div>
-          <a class='readmore' href='/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/' itemprop="url">
+          <a class='readmore' href='/2022/0922/vboxmanage%E4%BD%BF%E7%94%A8/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3256,7 +3246,7 @@ gtag('config', 'G-BNZ57LLBF3');
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","sameAs":["https://github.com/volantis-x"],"description":"linux english"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://benlogs.com/","name":"阿Ben的网络日志"}},{"@type":"ListItem","position":2,"item":{"@id":"https://benlogs.com/tags/ssl/","name":"ssl"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"阿Ben的网络日志","url":"https://benlogs.com/","keywords":null,"description":"linux english","author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","description":"linux english"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://benlogs.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"linux english","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","sameAs":["https://github.com/volantis-x"],"description":"linux english"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://benlogs.com/","name":"阿Ben的网络日志"}},{"@type":"ListItem","position":2,"item":{"@id":"https://benlogs.com/tags/vbox/","name":"vbox"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"阿Ben的网络日志","url":"https://benlogs.com/","keywords":null,"description":"linux english","author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","description":"linux english"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://benlogs.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"linux english","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
