@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://benlogs.com/tags/sentence/"/>
+  
+  <link rel="canonical" href="https://benlogs.com/2022/0828/vboxmanage使用/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -34,18 +34,23 @@
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="阿Ben的网络日志" type="application/atom+xml">
   <!-- 页面元数据 -->
-  <title>标签：Sentence - 阿Ben的网络日志</title>
-  <meta name="keywords" content="null">
+  <title>如何离线升级openssh和openssl - 阿Ben的网络日志</title>
+  <meta name="keywords" content="gcc,ssh,ssl,null">
   <meta desc name="description" content="linux english - Ben - 阿Ben的网络日志">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿Ben的网络日志">
-<meta property="og:url" content="https://benlogs.com/tags/Sentence/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何离线升级openssh和openssl">
+<meta property="og:url" content="https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="阿Ben的网络日志">
-<meta property="og:description" content="linux english">
+<meta property="og:description" content="linux中使用命令来管理虚拟机（vbox, VBoxManage）一、典型操作1.创建虚拟机1VBoxManage createvm --name Windows2016 --ostype “Windows2016_64” --register  2.添加Sata驱动器1VBoxManage storagectl Windows2016 --name &quot;SATA Controller&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-08-28T10:30:00.000Z">
+<meta property="article:modified_time" content="2022-09-22T09:20:08.837Z">
 <meta property="article:author" content="Ben">
+<meta property="article:tag" content="gcc">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="ssl">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2534,7 +2539,7 @@ gtag('config', 'G-BNZ57LLBF3');
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  focus' style="display: none;">
+      <div id="none" class='cover-wrapper post focus' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="img/background.jpg"></div>
 
@@ -2564,27 +2569,9 @@ gtag('config', 'G-BNZ57LLBF3');
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://benlogs.com/2022/0906/youtube english playlist/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://benlogs.com/2022/0828/vboxmanage使用/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="阿Ben的网络日志">
   </span>
@@ -2593,136 +2580,291 @@ gtag('config', 'G-BNZ57LLBF3');
     <meta itemprop="description" content="linux english">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/0906/youtube%20english%20playlist/"  itemprop="url">
-        youtube playlist test
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        1、视频  .embed-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-  }
-  .embed-container iframe, .embed-container object, .embed...
-      
+    
+      <h1 class="title" itemprop="name headline">
+        如何离线升级openssh和openssl
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Ben</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Linux/">Linux</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Linux/" itemprop="url"><span itemprop="name">Linux</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-09-06T22:30:00+08:00">2022-09-06</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/English/">English</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/English/" itemprop="url"><span itemprop="name">English</span></a>
-            </span>
+
+
           
         
-      </div>
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-08-28T18:30:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年8月28日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-        <div>
-          <a class='readmore' href='/2022/0906/youtube%20english%20playlist/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+      <span id="busuanzi_value_page_pv">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+        
+      <span>次浏览</span>
+    </p>
+  </a>
+</div>
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="linux中使用命令来管理虚拟机（vbox-VBoxManage）"><a href="#linux中使用命令来管理虚拟机（vbox-VBoxManage）" class="headerlink" title="linux中使用命令来管理虚拟机（vbox, VBoxManage）"></a>linux中使用命令来管理虚拟机（vbox, VBoxManage）</h1><h2 id="一、典型操作"><a href="#一、典型操作" class="headerlink" title="一、典型操作"></a><strong>一、典型操作</strong></h2><h3 id="1-创建虚拟机"><a href="#1-创建虚拟机" class="headerlink" title="1.创建虚拟机"></a><strong>1.创建虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage createvm --name Windows2016 --ostype “Windows2016_64” --register</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-添加Sata驱动器"><a href="#2-添加Sata驱动器" class="headerlink" title="2.添加Sata驱动器"></a><strong>2.添加Sata驱动器</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storagectl Windows2016 --name &quot;SATA Controller&quot; --add sata --controller IntelAHCI</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-创建虚拟磁盘"><a href="#3-创建虚拟磁盘" class="headerlink" title="3.创建虚拟磁盘"></a><strong>3.创建虚拟磁盘</strong></h3><p>102400MB（100G）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage createhd --filename win16.vdi --size 204800</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-将虚拟磁盘绑定到驱动器"><a href="#4-将虚拟磁盘绑定到驱动器" class="headerlink" title="4.将虚拟磁盘绑定到驱动器"></a><strong>4.将虚拟磁盘绑定到驱动器</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storageattach Windows2016 --storagectl &quot;SATA Controller&quot; --port 0 --device 0 --type hdd --medium win16.vdi</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-创建IDE驱动器"><a href="#5-创建IDE驱动器" class="headerlink" title="5.创建IDE驱动器"></a><strong>5.创建IDE驱动器</strong></h3><p>（即CD）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storagectl Windows2016 --name &quot;IDE Controller&quot; --add ide</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-加载ISO镜像"><a href="#6-加载ISO镜像" class="headerlink" title="6.加载ISO镜像"></a><strong>6.加载ISO镜像</strong></h3><p>（用于安装系统）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storageattach Windows2016 --storagectl &quot;IDE Controller&quot; --port 0 --device 0 --type dvddrive --medium /home/vms/cn_windows_server_2016.iso</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-设置启动顺序"><a href="#7-设置启动顺序" class="headerlink" title="7.设置启动顺序"></a><strong>7.设置启动顺序</strong></h3><p>（DVD优先）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2016 --boot1 dvd --boot2 disk --boot3 none --boot4 none</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-修改内存"><a href="#8-修改内存" class="headerlink" title="8.修改内存"></a><strong>8.修改内存</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2016 --memory 8192</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-修改虚拟显存"><a href="#9-修改虚拟显存" class="headerlink" title="9.修改虚拟显存"></a><strong>9.修改虚拟显存</strong></h3><p>（默认8M，可以不改）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2016 --vram 128</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-修改CPU数量"><a href="#10-修改CPU数量" class="headerlink" title="10.修改CPU数量"></a><strong>10.修改CPU数量</strong></h3><p>（默认1，可以不改）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage modifyvm Windows2019 --cpus 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-设置Nat网络"><a href="#11-设置Nat网络" class="headerlink" title="11.设置Nat网络"></a><strong>11.设置Nat网络</strong></h3><p>（不占用主机所在路由器IP，通过端口转发的方式访问虚拟机）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2016 --nic1 nat</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-开启VRDE"><a href="#12-开启VRDE" class="headerlink" title="12.开启VRDE"></a><strong>12.开启VRDE</strong></h3><p>用远程桌面安装系统等操作，类似维护端口。此功能需要先安装vbox的增强包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2016 --vrde on --vrdeport 3391</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-后台运行虚拟机"><a href="#13-后台运行虚拟机" class="headerlink" title="13.后台运行虚拟机"></a><strong>13.后台运行虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage startvm Windows2016 --type headless</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、其他操作"><a href="#二、其他操作" class="headerlink" title="二、其他操作"></a><strong>二、其他操作</strong></h2><h3 id="1-关闭虚拟机"><a href="#1-关闭虚拟机" class="headerlink" title="1.关闭虚拟机"></a><strong>1.关闭虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage controlvm “Windows2016 poweroff</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-卸载DVD中的ISO镜像"><a href="#2-卸载DVD中的ISO镜像" class="headerlink" title="2.卸载DVD中的ISO镜像"></a><strong>2.卸载DVD中的ISO镜像</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storageattach Windows2016 --storagectl “IDE Controller” --port 0 --device 0 --type dvddrive --medium none</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加桥接网络"><a href="#3-添加桥接网络" class="headerlink" title="3.添加桥接网络"></a><strong>3.添加桥接网络</strong></h3><p>说明：与主路由器同级的IP，一般NAT与桥接两种方式二选一。其中nic2即为第2张网卡的意思。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm “Win19” --nic2 bridged --nictype2 82545EM --cableconnected2 on --bridgeadapter2 em1</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-NAT转发3389端口到虚拟机"><a href="#4-NAT转发3389端口到虚拟机" class="headerlink" title="4.NAT转发3389端口到虚拟机"></a><strong>4.NAT转发3389端口到虚拟机</strong></h3><p>自命名为”yuancheng”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm Windows2019 --natpf1 “yuancheng,tcp,,3389,,3389”</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-删除名称为”yuancheng”的NAT转发规则"><a href="#5-删除名称为”yuancheng”的NAT转发规则" class="headerlink" title="5.删除名称为”yuancheng”的NAT转发规则"></a><strong>5.删除名称为”yuancheng”的NAT转发规则</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage modifyvm ” Windows2016″ --natpf1 delete “yuancheng”</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-解绑vdi"><a href="#6-解绑vdi" class="headerlink" title="6.解绑vdi"></a><strong>6.解绑vdi</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage storageattach Windows2016 --storagectl “SATA Controller” --port 0 --device 0 --type hdd --medium none</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-重新生成uuid"><a href="#7-重新生成uuid" class="headerlink" title="7.重新生成uuid"></a><strong>7.重新生成uuid</strong></h3><p>（在移动、复制vdi之后）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage internalcommands sethduuid /home/vms/win16.vdi</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-创建快照"><a href="#8-创建快照" class="headerlink" title="8.创建快照"></a><strong>8.创建快照</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage snapshot Windows2016 take “kuaizhao20210309”</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-还原快照"><a href="#9-还原快照" class="headerlink" title="9.还原快照"></a><strong>9.还原快照</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage snapshot Windows2016 restore kuaizhao20210309</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-克隆虚拟机"><a href="#10-克隆虚拟机" class="headerlink" title="10.克隆虚拟机"></a><strong>10.克隆虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage clonevm ” Windows2016″ --name=” Windows2016_2″ --basefolder=/data01/vms/vdi --register</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-导出虚拟机"><a href="#11-导出虚拟机" class="headerlink" title="11.导出虚拟机"></a><strong>11.导出虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage export ” Windows2016″ -o /home/vms/win16.ovf</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-导入虚拟机"><a href="#12-导入虚拟机" class="headerlink" title="12.导入虚拟机"></a><strong>12.导入虚拟机</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">校验</span></span><br><span class="line">vboxmanage import Windows2016.ovf --dry-run</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">导入</span></span><br><span class="line">vboxmanage import Windows2016.ovf --vsys 0 --vmname centos8_zabbix</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-修改磁盘大小"><a href="#13-修改磁盘大小" class="headerlink" title="13.修改磁盘大小"></a><strong>13.修改磁盘大小</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vboxmanage modifyhd cb73a594-6b0a-4321-915d-97a3ac3ae38a --resize 256000</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-关闭时间同步"><a href="#14-关闭时间同步" class="headerlink" title="14.关闭时间同步"></a><strong>14.关闭时间同步</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方案1（开启则设为0）</span></span><br><span class="line">VBoxManage setextradata centos77_djc “VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled” “1”</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方案1：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">关闭时间同步：</span></span><br><span class="line">vboxmanage guestproperty set &lt;虚拟机名/虚拟机UUID&gt; --timesync-set-stop</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">打开时间同步：</span></span><br><span class="line">vboxmanage guestproperty set &lt;虚拟机名/虚拟机UUID&gt; --timesync-set-start</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-删除虚拟机"><a href="#15-删除虚拟机" class="headerlink" title="15.删除虚拟机"></a><strong>15.删除虚拟机</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#注意,全部删除了,不可恢复的哦。可以不加–delete,先从虚拟机列表中删除,然后再删除相应的文件和文件夹</span><br><span class="line">VBoxManage unregistervm --delete vmnamevmname</span><br></pre></td></tr></table></figure>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-09-22T17:20:08+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年9月22日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://benlogs.com/2022/0902/英语的句型/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="阿Ben的网络日志">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="阿Ben的网络日志">
-    <meta itemprop="description" content="linux english">
-  </span>
+          
   
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/0902/%E8%8B%B1%E8%AF%AD%E7%9A%84%E5%8F%A5%E5%9E%8B/"  itemprop="url">
-        Sentence Patterns（句子模型）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/gcc/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>gcc</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ssh/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>ssh</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ssl/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>ssl</p></a></div>
+  <span hidden itemprop="keywords">gcc ssh ssl</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        Sentence Patterns（句子模型）“Sentence patterns” is just another way talk about the way a sentence is put together; the order of the elements（要素） in the sentence; sentence construction（结构）. Some sources ...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/&title=如何离线升级openssh和openssl - 阿Ben的网络日志&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/&title=如何离线升级openssh和openssl - 阿Ben的网络日志&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/&title=如何离线升级openssh和openssl - 阿Ben的网络日志&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time itemprop="dateCreated datePublished" datetime="2022-09-02T12:30:00+08:00">2022-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/English/">English</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/English/" itemprop="url"><span itemprop="name">English</span></a>
-            </span>
-          
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2022/0902/%E8%8B%B1%E8%AF%AD%E7%9A%84%E5%8F%A5%E5%9E%8B/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2022/0828/%E7%A6%BB%E7%BA%BF%E5%8D%87%E7%BA%A7opensshopenssl/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>如何离线升级openssh和openssl</p>
+          <p class='content'>如何离线升级openssh和openssl1、环境检查
+先确保你的服务器上已经有gcc，gcc-c++。这两个是编译工具。
+1rpm -qa |grep gcc
+
+
+缺少
+
+正常应该是这样
+缺少...</p>
+        </a>
+      
       
     </div>
   
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
+  <!-- Custom Files postEnd begin-->
   
-    
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
   
 
 
-    
-  
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2731,108 +2873,48 @@ gtag('config', 'G-BNZ57LLBF3');
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='img/logo.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>一个普通人的网络日记。</h2>
-        
-        
-        
-      </div>
-    
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/English/" href="/categories/English/"
-            active-action="action-categoriesEnglish"
-            ><div class='name'>English</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            active-action="action-categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Web/" href="/categories/Web/"
-            active-action="action-categoriesWeb"
-            ><div class='name'>Web</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BD%91%E7%BB%9C/" href="/categories/%E7%BD%91%E7%BB%9C/"
-            active-action="action-categoriesE7BD91E7BB9C"
-            ><div class='name'>网络</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Sentence/" style="font-size: 14px; color: #999">Sentence</a> <a href="/tags/english/" style="font-size: 14px; color: #999">english</a> <a href="/tags/gcc/" style="font-size: 14px; color: #999">gcc</a> <a href="/tags/grammar/" style="font-size: 14px; color: #999">grammar</a> <a href="/tags/ssh/" style="font-size: 14px; color: #999">ssh</a> <a href="/tags/ssl/" style="font-size: 14px; color: #999">ssl</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%B8%E5%9E%8B%E6%93%8D%E4%BD%9C"><span class="toc-text">一、典型操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.创建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0Sata%E9%A9%B1%E5%8A%A8%E5%99%A8"><span class="toc-text">2.添加Sata驱动器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%A3%81%E7%9B%98"><span class="toc-text">3.创建虚拟磁盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%B0%86%E8%99%9A%E6%8B%9F%E7%A3%81%E7%9B%98%E7%BB%91%E5%AE%9A%E5%88%B0%E9%A9%B1%E5%8A%A8%E5%99%A8"><span class="toc-text">4.将虚拟磁盘绑定到驱动器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%9B%E5%BB%BAIDE%E9%A9%B1%E5%8A%A8%E5%99%A8"><span class="toc-text">5.创建IDE驱动器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%8A%A0%E8%BD%BDISO%E9%95%9C%E5%83%8F"><span class="toc-text">6.加载ISO镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F"><span class="toc-text">7.设置启动顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98"><span class="toc-text">8.修改内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%BF%AE%E6%94%B9%E8%99%9A%E6%8B%9F%E6%98%BE%E5%AD%98"><span class="toc-text">9.修改虚拟显存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E4%BF%AE%E6%94%B9CPU%E6%95%B0%E9%87%8F"><span class="toc-text">10.修改CPU数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E8%AE%BE%E7%BD%AENat%E7%BD%91%E7%BB%9C"><span class="toc-text">11.设置Nat网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%BC%80%E5%90%AFVRDE"><span class="toc-text">12.开启VRDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">13.后台运行虚拟机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-text">二、其他操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B3%E9%97%AD%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">1.关闭虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%B8%E8%BD%BDDVD%E4%B8%AD%E7%9A%84ISO%E9%95%9C%E5%83%8F"><span class="toc-text">2.卸载DVD中的ISO镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="toc-text">3.添加桥接网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-NAT%E8%BD%AC%E5%8F%913389%E7%AB%AF%E5%8F%A3%E5%88%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">4.NAT转发3389端口到虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%A0%E9%99%A4%E5%90%8D%E7%A7%B0%E4%B8%BA%E2%80%9Dyuancheng%E2%80%9D%E7%9A%84NAT%E8%BD%AC%E5%8F%91%E8%A7%84%E5%88%99"><span class="toc-text">5.删除名称为”yuancheng”的NAT转发规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%A7%A3%E7%BB%91vdi"><span class="toc-text">6.解绑vdi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90uuid"><span class="toc-text">7.重新生成uuid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7"><span class="toc-text">8.创建快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E8%BF%98%E5%8E%9F%E5%BF%AB%E7%85%A7"><span class="toc-text">9.还原快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%85%8B%E9%9A%86%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">10.克隆虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%AF%BC%E5%87%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">11.导出虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%AF%BC%E5%85%A5%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">12.导入虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BF%AE%E6%94%B9%E7%A3%81%E7%9B%98%E5%A4%A7%E5%B0%8F"><span class="toc-text">13.修改磁盘大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%85%B3%E9%97%AD%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="toc-text">14.关闭时间同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E5%88%A0%E9%99%A4%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">15.删除虚拟机</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2860,13 +2942,14 @@ gtag('config', 'G-BNZ57LLBF3');
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3316,7 +3399,7 @@ gtag('config', 'G-BNZ57LLBF3');
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","sameAs":["https://github.com/volantis-x"],"description":"linux english"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://benlogs.com/","name":"阿Ben的网络日志"}},{"@type":"ListItem","position":2,"item":{"@id":"https://benlogs.com/tags/Sentence/","name":"Sentence"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"阿Ben的网络日志","url":"https://benlogs.com/","keywords":null,"description":"linux english","author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","description":"linux english"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://benlogs.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"linux english","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","sameAs":["https://github.com/volantis-x"],"description":"linux english"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://benlogs.com/","name":"阿Ben的网络日志"}},{"@type":"ListItem","position":2,"item":{"@id":"https://benlogs.com/categories/Linux/","name":"Linux"}},{"@type":"ListItem","position":3,"item":{"@id":"https://benlogs.com/2022/0828/vboxmanage使用/","name":"如何离线升级openssh和openssl"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"阿Ben的网络日志","url":"https://benlogs.com/","keywords":null,"description":"linux english","author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/","description":"linux english"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","url":"https://benlogs.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://benlogs.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何离线升级openssh和openssl","description":"linux english","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/"},"author":{"@type":"Person","name":"Ben","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://benlogs.com/"},"publisher":{"@type":"Organization","name":"阿Ben的网络日志","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://benlogs.com/2022/0828/vboxmanage%E4%BD%BF%E7%94%A8/","wordCount":0,"datePublished":"2022-08-28T10:30:00.000Z","dateModified":"2022-09-22T09:20:08.837Z","articleSection":"Linux","keywords":"gcc,ssh,ssl","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
