@@ -6,7 +6,7 @@
   <link href="https://benlogs.com/atom.xml" rel="self"/>
   
   <link href="https://benlogs.com/"/>
-  <updated>2022-09-22T09:24:32.136Z</updated>
+  <updated>2022-10-17T02:11:37.306Z</updated>
   <id>https://benlogs.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>元素周期表中英对照</title>
+    <link href="https://benlogs.com/2022/1017/%E6%97%A0%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7/"/>
+    <id>https://benlogs.com/2022/1017/%E6%97%A0%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7/</id>
+    <published>2022-10-17T02:30:00.000Z</published>
+    <updated>2022-10-17T02:11:37.306Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="元素周期表中英对照（Periodic-Table-of-the-Elements）"><a href="#元素周期表中英对照（Periodic-Table-of-the-Elements）" class="headerlink" title="元素周期表中英对照（Periodic Table of the Elements）"></a>元素周期表中英对照（Periodic Table of the Elements）</h1><p><img src="https://benlogs.com/imgesupload/img/IUPAC_Periodic_Table_150-04May22.jpg" class="lazyload" data-srcset="https://benlogs.com/imgesupload/img/IUPAC_Periodic_Table_150-04May22.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="IUPAC_Periodic_Table_150-04May22"></p><p><img src="https://benlogs.com/imgesupload/img/Periodic_table_zh-hans.svg" class="lazyload" data-srcset="https://benlogs.com/imgesupload/img/Periodic_table_zh-hans.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Periodic_table_zh-hans"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;元素周期表中英对照（Periodic-Table-of-the-Elements）&quot;&gt;&lt;a href=&quot;#元素周期表中英对照（Periodic-Table-of-the-Elements）&quot; class=&quot;headerlink&quot; title=&quot;元素周期表中英对照（</summary>
+      
+    
+    
+    
+    <category term="English" scheme="https://benlogs.com/categories/English/"/>
+    
+    
+    <category term="gcc" scheme="https://benlogs.com/tags/gcc/"/>
+    
+    <category term="ssh" scheme="https://benlogs.com/tags/ssh/"/>
+    
+    <category term="ssl" scheme="https://benlogs.com/tags/ssl/"/>
+    
+  </entry>
   
   <entry>
     <title>linux中使用命令来管理虚拟机（vbox, VBoxManage）</title>
